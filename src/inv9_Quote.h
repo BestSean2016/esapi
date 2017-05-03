@@ -1,8 +1,8 @@
 #ifndef QUOTE_H
 #define QUOTE_H
 
-#include "TapQuoteAPI.h"
-#include "../Common/SimpleEvent.h"
+#include "inv9_TapQuoteAPI.h"
+#include "SimpleEvent.h"
 
 class Quote : public ITapQuoteAPINotify
 {

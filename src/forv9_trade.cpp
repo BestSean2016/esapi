@@ -1,10 +1,84 @@
-#include "Trade.h"
-#include "iTapAPIError.h"
-#include "TradeConfig.h"
+#include "forv9_Trade.h"
+#include "forv9_iTapAPIError.h"
+#include "forv9_TradeConfig.h"
 #include <iostream>
 #include <string.h>
+#include <stdlib.h>
+#include <memory.h>
 
 using namespace std;
+
+
+#define _UNIX
+#ifdef _UNIX
+char *strcpy_s(char *buf, const size_t buflen, const char *str) {
+  if (strlen(str) > buflen - 1) {
+      strncpy(buf, str, buflen - 1);
+      buf[buflen - 1] = 0;
+  } else
+      strcpy(buf, str);
+  return buf;
+}
+
+//const size_t buflen,
+char *strncpy_s(char *buf, const char *str, const int n) {
+  strncpy(buf, str, (size_t)n);
+  //buf[min(buflen, (size_t)n)] = 0;
+  return buf;
+}
+
+char* strcat_s(char* buf, const size_t buflen, const char* src) {
+    if  (strlen(buf) + strlen(src) >= buflen)
+        return (0);
+
+    return strcat(buf, src);
+}
+
+int fopen_s(FILE** fp, const char* filepath, const char* mode) {
+    *fp = fopen(filepath, mode);
+    return (*fp == NULL ? -1 : 0);
+}
+
+void itoa(unsigned long val, char *buf, unsigned radix) {
+  char *p;         /* pointer to traverse string */
+  char *firstdig;  /* pointer to first digit */
+  char temp;       /* temp char */
+  unsigned digval; /* value of digit */
+
+  p = buf;
+  firstdig = p; /* save pointer to first digit */
+
+  do {
+    digval = (unsigned)(val % radix);
+    val /= radix; /* get next digit */
+
+    /* convert to ascii and store */
+    if (digval > 9)
+      *p++ = (char)(digval - 10 + 'a'); /* a letter */
+    else
+      *p++ = (char)(digval + '0'); /* a digit */
+  } while (val > 0);
+
+  /* We now have the digit of the number in the buffer, but in reverse
+  order.  Thus we reverse them now. */
+
+  *p-- = '\0'; /* terminate string; p points to last digit */
+
+  do {
+    temp = *p;
+    *p = *firstdig;
+    *firstdig = temp; /* swap *p and *firstdig */
+    --p;
+    ++firstdig;           /* advance to next two digits */
+  } while (firstdig < p); /* repeat until halfway */
+}
+
+void localtime_s(struct tm* ttm, time_t* tt) {
+  (void)localtime_r(tt, ttm);
+}
+
+#endif // UNIX
+
 
 Trade::Trade(void):
 	m_pAPI(NULL),
@@ -97,7 +171,7 @@ void Trade::t_canncelOrder()
 
 	TapAPIOrderCancelReq req;
 	memset(&req,0,sizeof(req));
-	strncpy_s(req.OrderNo,orderno,strlen(orderno));
+    strncpy_s(req.OrderNo,orderno,strlen(orderno));
 
 	TAPIUINT32 reqid = 0;
 	TAPIINT32 iErr = TAPIERROR_SUCCEED;
@@ -112,7 +186,7 @@ void Trade::t_qryFund()
 {
 	TapAPIFundReq req;
 	memset(&req,0,sizeof(req));
-	strncpy_s(req.AccountNo,DEFAULT_ACCOUNT_NO,strlen(DEFAULT_ACCOUNT_NO));
+    strncpy_s(req.AccountNo,DEFAULT_ACCOUNT_NO,strlen(DEFAULT_ACCOUNT_NO));
 
 	TAPIINT32 iErr = TAPIERROR_SUCCEED;
 	iErr = m_pAPI->QryFund(&m_uiSessionID,&req);
@@ -125,7 +199,7 @@ void Trade::t_qryPostion()
 {
 	TapAPIPositionQryReq req;
 	memset(&req,0,sizeof(req));
-	strncpy_s(req.AccountNo,DEFAULT_ACCOUNT_NO,strlen(DEFAULT_ACCOUNT_NO));
+    strncpy_s(req.AccountNo,DEFAULT_ACCOUNT_NO,strlen(DEFAULT_ACCOUNT_NO));
 
 	TAPIINT32 iErr = TAPIERROR_SUCCEED;
 	iErr = m_pAPI->QryPosition(&m_uiSessionID,&req);

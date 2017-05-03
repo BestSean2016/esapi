@@ -1,7 +1,7 @@
-#include "TapTradeAPI.h"
-#include "TapAPIError.h"
-#include "Trade.h"
-#include "TradeConfig.h"
+#include "inv9_TapTradeAPI.h"
+#include "inv9_TapAPIError.h"
+#include "inv9_Trade.h"
+#include "inv9_TradeConfig.h"
 
 #include <iostream>
 #include <string.h>
@@ -34,4 +34,9 @@ int main_inv9_trade(int argc, char* argv[])
 
 
 	return 0;
+}
+
+
+int main(int argc, char* argv[]) {
+    return main_inv9_trade(argc, argv);
 }

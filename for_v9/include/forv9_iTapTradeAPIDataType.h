@@ -1,8 +1,9 @@
 //该文件定义了TapTradeAPI 使用的数据类型和数据结构
 #ifndef TAP_TRADE_API_DATA_TYPE_H
 #define TAP_TRADE_API_DATA_TYPE_H
-#include "iTapAPICommDef.h"
-
+#include "forv9_iTapAPICommDef.h"
+#include <memory.h>
+#include <string.h>
 
 namespace ITapTrade
 {

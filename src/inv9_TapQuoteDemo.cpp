@@ -1,7 +1,7 @@
-#include "TapQuoteAPI.h"
-#include "TapAPIError.h"
-#include "Quote.h"
-#include "QuoteConfig.h"
+#include "inv9_TapQuoteAPI.h"
+#include "inv9_TapAPIError.h"
+#include "inv9_Quote.h"
+#include "inv9_QuoteConfig.h"
 
 #include <iostream>
 #include <string.h>
@@ -54,4 +54,9 @@ int main_inv9_quote(int argc, char* argv[])
     objQuote.RunTest();
 
     return 0;
+}
+
+
+int main(int argc, char* argv[]) {
+    return main_inv9_quote(argc, argv);
 }

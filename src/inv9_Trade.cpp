@@ -1,6 +1,6 @@
-#include "Trade.h"
-#include "TapAPIError.h"
-#include "TradeConfig.h"
+#include "inv9_Trade.h"
+#include "inv9_TapAPIError.h"
+#include "inv9_TradeConfig.h"
 #include <iostream>
 #include <string.h>
 

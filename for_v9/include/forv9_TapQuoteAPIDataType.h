@@ -2,7 +2,7 @@
 #define TAP_QUOTE_API_DATA_TYPE_H
 //该文件定义了TapQuoteAPI 使用的数据类型和数据结构
 
-#include "TapAPICommDef.h"
+#include "forv9_TapAPICommDef.h"
 
 #pragma pack(push, 1)
 

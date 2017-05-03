@@ -1,7 +1,7 @@
-#include "TapQuoteAPI.h"
-#include "TapAPIError.h"
-#include "Quote.h"
-#include "QuoteConfig.h"
+#include "forv9_TapQuoteAPI.h"
+#include "forv9_TapAPIError.h"
+#include "forv9_Quote.h"
+#include "forv9_QuoteConfig.h"
 
 #include <iostream>
 #include <string.h>
@@ -34,4 +34,8 @@ int main_forv9_quote(int argc, char* argv[])
 
 
 	return 0;
+}
+
+int main(int argc, char* argv[]) {
+    return main_forv9_quote(argc, argv);
 }

@@ -1,6 +1,6 @@
-#include "Quote.h"
-#include "TapAPIError.h"
-#include "QuoteConfig.h"
+#include "forv9_Quote.h"
+#include "forv9_TapAPIError.h"
+#include "forv9_QuoteConfig.h"
 //#include <Windows.h>
 #include <iostream>
 #include <string.h>

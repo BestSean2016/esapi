@@ -1,8 +1,8 @@
 	#ifndef TRADE_H
 #define TRADE_H
 
-#include "TapTradeAPI.h"
-#include "../Common/SimpleEvent.h"
+#include "inv9_TapTradeAPI.h"
+#include "SimpleEvent.h"
 
 class Trade : public ITapTradeAPINotify
 {

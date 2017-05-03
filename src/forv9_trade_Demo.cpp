@@ -2,10 +2,10 @@
 
 #include <iostream>
 #include <string.h>
-#include "iTapTradeAPI.h"
-#include "iTapAPIError.h"
-#include "Trade.h"
-#include "TradeConfig.h"
+#include "forv9_iTapTradeAPI.h"
+#include "forv9_iTapAPIError.h"
+#include "forv9_Trade.h"
+#include "forv9_TradeConfig.h"
 
 
 using namespace std;
@@ -38,4 +38,8 @@ int main_forv9_trade(int argc, char* argv[])
 
 
 	return 0;
+}
+
+int main(int argc, char* argv[]) {
+    return main_forv9_trade(argc, argv);
 }

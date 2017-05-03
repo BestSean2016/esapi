@@ -32,6 +32,9 @@ B30F58A3F211D9C3B3839BE2D73FD08DD776B9188654853DDA57675EBB7D6FBBFC")
 #define DEFAULT_COMMODITY_NO	("IF")
 #define DEFAULT_CONTRACT_NO		("1701")
 
+#include <stdlib.h>
+#include <string.h>
+
 template<size_t size> inline void APIStrncpy(char (&Dst)[size], const char* source)
 {
 #ifdef WIN32

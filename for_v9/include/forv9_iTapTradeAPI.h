@@ -1,7 +1,7 @@
 #ifndef TAP_TRADE_API_H
 #define TAP_TRADE_API_H
 
-#include "iTapTradeAPIDataType.h"
+#include "forv9_iTapTradeAPIDataType.h"
 //#include "TapProtocol.h"
 
 #if defined WIN32 || defined WIN64

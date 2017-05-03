@@ -1,8 +1,8 @@
 #ifndef TRADE_H
 #define TRADE_H
 
-#include "iTapTradeAPI.h"
-#include "../Common/SimpleEvent.h"
+#include "forv9_iTapTradeAPI.h"
+#include "SimpleEvent.h"
 
 
 using namespace ITapTrade;
