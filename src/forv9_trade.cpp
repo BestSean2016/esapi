@@ -80,25 +80,25 @@ void localtime_s(struct tm* ttm, time_t* tt) {
 #endif // UNIX
 
 
-Trade::Trade(void):
+Trade_fv9::Trade_fv9(void):
 	m_pAPI(NULL),
 	m_bIsAPIReady(false)
 {
 }
 
 
-Trade::~Trade(void)
+Trade_fv9::~Trade_fv9(void)
 {
 }
 
 
-void Trade::SetAPI(ITapTradeAPI *pAPI)
+void Trade_fv9::SetAPI(ITapTradeAPI *pAPI)
 {
 	m_pAPI = pAPI;
 }
 
 
-void Trade::printHelp()
+void Trade_fv9::printHelp()
 {
 	cout<<"---------------------------------\n"
 		<<"iTapTradeAPI_Demo CMD\n"
@@ -113,7 +113,7 @@ void Trade::printHelp()
 		<<endl;
 }
 
-void Trade::loopCmd()
+void Trade_fv9::loopCmd()
 {
 	this->printHelp();
 	while(1)
@@ -136,7 +136,7 @@ void Trade::loopCmd()
 }
 
 
-void Trade::t_insertOrder()
+void Trade_fv9::t_insertOrder()
 {
 	TAPIINT32 iErr = TAPIERROR_SUCCEED;
 		//下单
@@ -163,7 +163,7 @@ void Trade::t_insertOrder()
 	}
 }
 
-void Trade::t_canncelOrder()
+void Trade_fv9::t_canncelOrder()
 {
 	TAPISTR_20 orderno;
 	cout<<"cancle operator :insert orderno"<<endl;
@@ -182,7 +182,7 @@ void Trade::t_canncelOrder()
 	}
 }
 
-void Trade::t_qryFund()
+void Trade_fv9::t_qryFund()
 {
 	TapAPIFundReq req;
 	memset(&req,0,sizeof(req));
@@ -195,7 +195,7 @@ void Trade::t_qryFund()
 	}
 }
 
-void Trade::t_qryPostion()
+void Trade_fv9::t_qryPostion()
 {
 	TapAPIPositionQryReq req;
 	memset(&req,0,sizeof(req));
@@ -208,7 +208,7 @@ void Trade::t_qryPostion()
 	}
 }
 
-void Trade::t_modify()
+void Trade_fv9::t_modify()
 {
 	TapAPIAmendOrder req;
 	TAPISTR_20	orderNo;
@@ -234,13 +234,13 @@ void Trade::t_modify()
 	}
 }
 
-void Trade::t_qryCommdity()
+void Trade_fv9::t_qryCommdity()
 {
 	TAPIINT32 iErr = TAPIERROR_SUCCEED;
 	iErr = m_pAPI->QryCommodity(&m_uiSessionID);
 }
 
-void Trade::RunTest()
+void Trade_fv9::RunTest()
 {
 	if(NULL == m_pAPI) {
 		cout << "Error: m_pAPI is NULL." << endl;
@@ -286,12 +286,12 @@ void Trade::RunTest()
 	}	
 }
 
-void TAP_CDECL Trade::OnConnect()
+void TAP_CDECL Trade_fv9::OnConnect()
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRspLogin( TAPIINT32 errorCode, const TapAPITradeLoginRspInfo *loginRspInfo )
+void TAP_CDECL Trade_fv9::OnRspLogin( TAPIINT32 errorCode, const TapAPITradeLoginRspInfo *loginRspInfo )
 {
 	if(TAPIERROR_SUCCEED == errorCode) {
 		cout << "登录成功，等待API初始化..." << endl;
@@ -302,34 +302,34 @@ void TAP_CDECL Trade::OnRspLogin( TAPIINT32 errorCode, const TapAPITradeLoginRsp
 	}
 }
 
-void TAP_CDECL Trade::OnAPIReady()
+void TAP_CDECL Trade_fv9::OnAPIReady()
 {
 	cout << "API初始化完成" << endl;
 	m_bIsAPIReady = true;
 	m_Event.SignalEvent();	
 }
 
-void TAP_CDECL Trade::OnDisconnect( TAPIINT32 reasonCode )
+void TAP_CDECL Trade_fv9::OnDisconnect( TAPIINT32 reasonCode )
 {
 	cout << "API断开,断开原因:"<<reasonCode << endl;
 }
 
-void TAP_CDECL Trade::OnRspChangePassword( TAPIUINT32 sessionID, TAPIINT32 errorCode )
+void TAP_CDECL Trade_fv9::OnRspChangePassword( TAPIUINT32 sessionID, TAPIINT32 errorCode )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRspSetReservedInfo( TAPIUINT32 sessionID, TAPIINT32 errorCode, const TAPISTR_50 info )
+void TAP_CDECL Trade_fv9::OnRspSetReservedInfo( TAPIUINT32 sessionID, TAPIINT32 errorCode, const TAPISTR_50 info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRspQryAccount( TAPIUINT32 sessionID, TAPIUINT32 errorCode, TAPIYNFLAG isLast, const TapAPIAccountInfo *info )
+void TAP_CDECL Trade_fv9::OnRspQryAccount( TAPIUINT32 sessionID, TAPIUINT32 errorCode, TAPIYNFLAG isLast, const TapAPIAccountInfo *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRspQryFund( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIFundData *info )
+void TAP_CDECL Trade_fv9::OnRspQryFund( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIFundData *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 
@@ -346,32 +346,32 @@ void TAP_CDECL Trade::OnRspQryFund( TAPIUINT32 sessionID, TAPIINT32 errorCode, T
 	
 }
 
-void TAP_CDECL Trade::OnRtnFund( const TapAPIFundData *info )
+void TAP_CDECL Trade_fv9::OnRtnFund( const TapAPIFundData *info )
 {
 	//cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRspQryExchange( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIExchangeInfo *info )
+void TAP_CDECL Trade_fv9::OnRspQryExchange( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIExchangeInfo *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRspQryCommodity( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPICommodityInfo *info )
+void TAP_CDECL Trade_fv9::OnRspQryCommodity( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPICommodityInfo *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRspQryContract( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPITradeContractInfo *info )
+void TAP_CDECL Trade_fv9::OnRspQryContract( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPITradeContractInfo *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRtnContract( const TapAPITradeContractInfo *info )
+void TAP_CDECL Trade_fv9::OnRtnContract( const TapAPITradeContractInfo *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRtnOrder( const TapAPIOrderInfoNotice *info )
+void TAP_CDECL Trade_fv9::OnRtnOrder( const TapAPIOrderInfoNotice *info )
 
 {
 	cout << __FUNCTION__ << " is called." << endl;
@@ -402,27 +402,27 @@ void TAP_CDECL Trade::OnRtnOrder( const TapAPIOrderInfoNotice *info )
 
 }
 
-void TAP_CDECL Trade::OnRspOrderAction( TAPIUINT32 sessionID, TAPIUINT32 errorCode, const TapAPIOrderActionRsp *info )
+void TAP_CDECL Trade_fv9::OnRspOrderAction( TAPIUINT32 sessionID, TAPIUINT32 errorCode, const TapAPIOrderActionRsp *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRspQryOrder( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIOrderInfo *info )
+void TAP_CDECL Trade_fv9::OnRspQryOrder( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIOrderInfo *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRspQryOrderProcess( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIOrderInfo *info )
+void TAP_CDECL Trade_fv9::OnRspQryOrderProcess( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIOrderInfo *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRspQryFill( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIFillInfo *info )
+void TAP_CDECL Trade_fv9::OnRspQryFill( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIFillInfo *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRtnFill( const TapAPIFillInfo *info )
+void TAP_CDECL Trade_fv9::OnRtnFill( const TapAPIFillInfo *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 	cout<< "品种" <<info->CommodityNo << ","
@@ -431,7 +431,7 @@ void TAP_CDECL Trade::OnRtnFill( const TapAPIFillInfo *info )
 		<< "成交量"<<info->MatchQty <<endl;
 }
 
-void TAP_CDECL Trade::OnRspQryPosition( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIPositionInfo *info )
+void TAP_CDECL Trade_fv9::OnRspQryPosition( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIPositionInfo *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 
@@ -446,7 +446,7 @@ void TAP_CDECL Trade::OnRspQryPosition( TAPIUINT32 sessionID, TAPIINT32 errorCod
 
 }
 
-void TAP_CDECL Trade::OnRtnPosition( const TapAPIPositionInfo *info )
+void TAP_CDECL Trade_fv9::OnRtnPosition( const TapAPIPositionInfo *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 	cout<< "品种" << info->CommodityNo <<","
@@ -455,70 +455,70 @@ void TAP_CDECL Trade::OnRtnPosition( const TapAPIPositionInfo *info )
 		<< "持仓价"<< info->PositionPrice<<endl;
 }
 
-void TAP_CDECL Trade::OnRspQryClose( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPICloseInfo *info )
+void TAP_CDECL Trade_fv9::OnRspQryClose( TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPICloseInfo *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRtnClose( const TapAPICloseInfo *info )
+void TAP_CDECL Trade_fv9::OnRtnClose( const TapAPICloseInfo *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Trade::OnRtnPositionProfit( const TapAPIPositionProfitNotice *info )
+void TAP_CDECL Trade_fv9::OnRtnPositionProfit( const TapAPIPositionProfitNotice *info )
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
-void TAP_CDECL Trade::OnRspQryCurrency(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPICurrencyInfo *info)
+void TAP_CDECL Trade_fv9::OnRspQryCurrency(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPICurrencyInfo *info)
 {
 
 }
 
-void TAP_CDECL Trade::OnRspQryTradeMessage(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPITradeMessage *info)
+void TAP_CDECL Trade_fv9::OnRspQryTradeMessage(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPITradeMessage *info)
 {
 }
 
-void TAP_CDECL Trade::OnRtnTradeMessage(const TapAPITradeMessage *info)
+void TAP_CDECL Trade_fv9::OnRtnTradeMessage(const TapAPITradeMessage *info)
 {
 }
 
-void TAP_CDECL Trade::OnRspQryHisOrder(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIHisOrderQryRsp *info)
+void TAP_CDECL Trade_fv9::OnRspQryHisOrder(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIHisOrderQryRsp *info)
 {
 }
 
-void TAP_CDECL Trade::OnRspQryHisOrderProcess(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIHisOrderProcessQryRsp *info)
+void TAP_CDECL Trade_fv9::OnRspQryHisOrderProcess(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIHisOrderProcessQryRsp *info)
 {
 }
 
-void TAP_CDECL Trade::OnRspQryHisMatch(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIHisMatchQryRsp *info)
+void TAP_CDECL Trade_fv9::OnRspQryHisMatch(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIHisMatchQryRsp *info)
 {
 }
 
-void TAP_CDECL Trade::OnRspQryHisPosition(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIHisPositionQryRsp *info)
+void TAP_CDECL Trade_fv9::OnRspQryHisPosition(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIHisPositionQryRsp *info)
 {
 }
 
-void TAP_CDECL Trade::OnRspQryHisDelivery(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIHisDeliveryQryRsp *info)
+void TAP_CDECL Trade_fv9::OnRspQryHisDelivery(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIHisDeliveryQryRsp *info)
 {
 }
 
-void TAP_CDECL Trade::OnRspQryAccountCashAdjust(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIAccountCashAdjustQryRsp *info)
+void TAP_CDECL Trade_fv9::OnRspQryAccountCashAdjust(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIAccountCashAdjustQryRsp *info)
 {
 }
 
-void TAP_CDECL Trade::OnRspQryBill(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIBillQryRsp *info)
+void TAP_CDECL Trade_fv9::OnRspQryBill(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIBillQryRsp *info)
 {
 }
 
-void TAP_CDECL Trade::OnExpriationDate(ITapTrade::TAPIDATE date, int days)
+void TAP_CDECL Trade_fv9::OnExpriationDate(ITapTrade::TAPIDATE date, int days)
 {
 }
 
-void TAP_CDECL Trade::OnRspQryAccountFeeRent(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIAccountFeeRentQryRsp *info)
+void TAP_CDECL Trade_fv9::OnRspQryAccountFeeRent(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIAccountFeeRentQryRsp *info)
 {
 }
 
-void TAP_CDECL Trade::OnRspQryAccountMarginRent(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIAccountMarginRentQryRsp *info)
+void TAP_CDECL Trade_fv9::OnRspQryAccountMarginRent(ITapTrade::TAPIUINT32 sessionID, ITapTrade::TAPIINT32 errorCode, ITapTrade::TAPIYNFLAG isLast, const ITapTrade::TapAPIAccountMarginRentQryRsp *info)
 {
 
 }

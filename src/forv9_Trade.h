@@ -7,11 +7,11 @@
 
 using namespace ITapTrade;
 
-class Trade : public ITapTradeAPINotify
+class Trade_fv9 : public ITapTradeAPINotify
 {
 public:
-	Trade(void);
-	~Trade(void);
+    Trade_fv9(void);
+    ~Trade_fv9(void);
 
 	void SetAPI(ITapTradeAPI *pAPI);
 	void RunTest();

@@ -4,11 +4,11 @@
 #include "forv9_TapQuoteAPI.h"
 #include "SimpleEvent.h"
 
-class Quote : public ITapQuoteAPINotify
+class Quote_fv9 : public ITapQuoteAPINotify
 {
 public:
-	Quote(void);
-	~Quote(void);
+    Quote_fv9(void);
+    ~Quote_fv9(void);
 
 	void SetAPI(ITapQuoteAPI* pAPI);
 	void RunTest();

@@ -7,25 +7,25 @@
 
 using namespace std;
 
-Quote::Quote(void):
+Quote_inv9::Quote_inv9(void):
 	m_pAPI(NULL),
 	m_bIsAPIReady(false)
 {
 }
 
 
-Quote::~Quote(void)
+Quote_inv9::~Quote_inv9(void)
 {
 }
 
 
-void Quote::SetAPI(ITapQuoteAPI *pAPI)
+void Quote_inv9::SetAPI(ITapQuoteAPI *pAPI)
 {
 	m_pAPI = pAPI;
 }
 
 
-void Quote::RunTest()
+void Quote_inv9::RunTest()
 {
 	if(NULL == m_pAPI) {
 		cout << "Error: m_pAPI is NULL." << endl;
@@ -85,7 +85,7 @@ void Quote::RunTest()
 
 
 
-void TAP_CDECL Quote::OnRspLogin(TAPIINT32 errorCode, const TapAPIQuotLoginRspInfo *info)
+void TAP_CDECL Quote_inv9::OnRspLogin(TAPIINT32 errorCode, const TapAPIQuotLoginRspInfo *info)
 {
 	if(TAPIERROR_SUCCEED == errorCode) {
 		cout << "登录成功，等待API初始化..." << endl;
@@ -97,43 +97,43 @@ void TAP_CDECL Quote::OnRspLogin(TAPIINT32 errorCode, const TapAPIQuotLoginRspIn
 	}
 }
 
-void TAP_CDECL Quote::OnAPIReady()
+void TAP_CDECL Quote_inv9::OnAPIReady()
 {
 	cout << "API初始化完成" << endl;
 	m_Event.SignalEvent();	
 }
 
-void TAP_CDECL Quote::OnDisconnect(TAPIINT32 reasonCode)
+void TAP_CDECL Quote_inv9::OnDisconnect(TAPIINT32 reasonCode)
 {
 	cout << "API断开,断开原因:"<<reasonCode << endl;
 }
 
-void TAP_CDECL Quote::OnRspChangePassword(TAPIUINT32 sessionID, TAPIINT32 errorCode)
+void TAP_CDECL Quote_inv9::OnRspChangePassword(TAPIUINT32 sessionID, TAPIINT32 errorCode)
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Quote::OnRspQryExchange(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIExchangeInfo *info)
+void TAP_CDECL Quote_inv9::OnRspQryExchange(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIExchangeInfo *info)
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Quote::OnRspQryCommodity(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIQuoteCommodityInfo *info)
+void TAP_CDECL Quote_inv9::OnRspQryCommodity(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIQuoteCommodityInfo *info)
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Quote::OnRspQryContract(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIQuoteContractInfo *info)
+void TAP_CDECL Quote_inv9::OnRspQryContract(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIQuoteContractInfo *info)
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Quote::OnRtnContract(const TapAPIQuoteContractInfo *info)
+void TAP_CDECL Quote_inv9::OnRtnContract(const TapAPIQuoteContractInfo *info)
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Quote::OnRspSubscribeQuote(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIQuoteWhole *info)
+void TAP_CDECL Quote_inv9::OnRspSubscribeQuote(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIQuoteWhole *info)
 {
 	if (TAPIERROR_SUCCEED == errorCode)
 	{
@@ -155,12 +155,12 @@ void TAP_CDECL Quote::OnRspSubscribeQuote(TAPIUINT32 sessionID, TAPIINT32 errorC
 	}
 }
 
-void TAP_CDECL Quote::OnRspUnSubscribeQuote(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIContract *info)
+void TAP_CDECL Quote_inv9::OnRspUnSubscribeQuote(TAPIUINT32 sessionID, TAPIINT32 errorCode, TAPIYNFLAG isLast, const TapAPIContract *info)
 {
 	cout << __FUNCTION__ << " is called." << endl;
 }
 
-void TAP_CDECL Quote::OnRtnQuote(const TapAPIQuoteWhole *info)
+void TAP_CDECL Quote_inv9::OnRtnQuote(const TapAPIQuoteWhole *info)
 {
 	if (NULL != info)
 	{

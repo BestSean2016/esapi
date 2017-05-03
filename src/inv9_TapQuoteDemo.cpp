@@ -45,7 +45,7 @@ int main_inv9_quote(int argc, char* argv[])
     }
 
     //设定ITapQuoteAPINotify的实现类，用于异步消息的接收
-    Quote objQuote;
+    Quote_inv9 objQuote;
     pAPI->SetAPINotify(&objQuote);
 
 

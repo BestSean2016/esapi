@@ -24,7 +24,7 @@ int main_inv9_trade(int argc, char* argv[])
 	}
 
 	//设定ITapTradeAPINotify的实现类，用于异步消息的接收
-	Trade objTrade;
+    Trade_inv9 objTrade;
 	pAPI->SetAPINotify(&objTrade);
 	
 

@@ -24,7 +24,7 @@ int main_forv9_quote(int argc, char* argv[])
 	}
 
 	//设定ITapQuoteAPINotify的实现类，用于异步消息的接收
-	Quote objQuote;
+    Quote_fv9 objQuote;
 	pAPI->SetAPINotify(&objQuote);
 	
 

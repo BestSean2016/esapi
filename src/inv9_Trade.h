@@ -4,11 +4,11 @@
 #include "inv9_TapTradeAPI.h"
 #include "SimpleEvent.h"
 
-class Trade : public ITapTradeAPINotify
+class Trade_inv9 : public ITapTradeAPINotify
 {
 public:
-	Trade(void);
-	~Trade(void);
+    Trade_inv9(void);
+    ~Trade_inv9(void);
 
 	void SetAPI(ITapTradeAPI *pAPI);
 	void RunTest();
