@@ -1,5 +1,3 @@
-
-
 #include <iostream>
 #include <string.h>
 #include "forv9_iTapTradeAPI.h"
@@ -40,6 +38,8 @@ int main_forv9_trade(int argc, char* argv[])
 	return 0;
 }
 
+#ifndef LIBFV9TRADE_LIBRARY
 int main(int argc, char* argv[]) {
     return main_forv9_trade(argc, argv);
 }
+#endif //LIBFV9TRADE_LIBRARY

@@ -1,5 +1,5 @@
-#ifndef TRADE_H
-#define TRADE_H
+#ifndef FOR_V9_TRADE_H
+#define FOR_V9_TRADE_H
 
 #include "forv9_iTapTradeAPI.h"
 #include "SimpleEvent.h"

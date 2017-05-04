@@ -36,7 +36,8 @@ int main_inv9_trade(int argc, char* argv[])
 	return 0;
 }
 
-
+#ifndef LIBINV9TRADE_LIBRARY
 int main(int argc, char* argv[]) {
     return main_inv9_trade(argc, argv);
 }
+#endif //LIBINV9TRADE_LIBRARY

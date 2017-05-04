@@ -1,5 +1,5 @@
-#ifndef TRADE_CONFIG_H
-#define TRADE_CONFIG_H
+#ifndef FOR_V9_TRADE_CONFIG_H
+#define FOR_V9_TRADE_CONFIG_H
 
 //交易IP地址与端口
 #define DEFAULT_IP		("123.15.58.28")

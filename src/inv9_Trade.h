@@ -1,5 +1,5 @@
-	#ifndef TRADE_H
-#define TRADE_H
+#ifndef IN_V9_TRADE_H
+#define IN_V9_TRADE_H
 
 #include "inv9_TapTradeAPI.h"
 #include "SimpleEvent.h"

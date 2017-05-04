@@ -1,5 +1,5 @@
-#ifndef QUOTE_CONFIG_H
-#define QUOTE_CONFIG_H
+#ifndef FOR_V9_QUOTE_CONFIG_H
+#define FOR_V9_QUOTE_CONFIG_H
 
 //行情IP地址与端口 联通
 #define DEFAULT_IP		("123.15.58.21")

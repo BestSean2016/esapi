@@ -56,7 +56,8 @@ int main_inv9_quote(int argc, char* argv[])
     return 0;
 }
 
-
+#ifndef LIBINV9QUOTE_LIBRARY
 int main(int argc, char* argv[]) {
     return main_inv9_quote(argc, argv);
 }
+#endif

@@ -36,6 +36,9 @@ int main_forv9_quote(int argc, char* argv[])
 	return 0;
 }
 
+
+#ifndef LIBFV9QUOTE_LIBRARY
 int main(int argc, char* argv[]) {
     return main_forv9_quote(argc, argv);
 }
+#endif //LIBFV9QUOTE_LIBRARY

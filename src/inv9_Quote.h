@@ -1,5 +1,5 @@
-#ifndef QUOTE_H
-#define QUOTE_H
+#ifndef IN_V9_QUOTE_H
+#define IN_V9_QUOTE_H
 
 #include "inv9_TapQuoteAPI.h"
 #include "SimpleEvent.h"
